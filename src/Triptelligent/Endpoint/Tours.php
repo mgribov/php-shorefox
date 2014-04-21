@@ -1,0 +1,88 @@
+<?php
+
+namespace Triptelligent\Endpoint;
+
+class Tours extends Endpoint {
+
+    protected $path = 'tours';
+
+    /**
+     * Get a list of tours for a destination. 
+     * @see https://api.triptelligent.com/doc/public/tours/getting_a_list_of_tours_in_a_specific_destination.html
+     * @see https://api.triptelligent.com/doc/public/tours/getting_a_list_of_tours_that_are_available_on_a_specific_date.html
+     * 
+     * @param integer $d
+     * @param \DateTime $date - optional
+     * @return \StdClass
+     */
+    public function getForDestination($d, \DateTime $date = null) {
+        $params = array('in_destination' => $d);
+
+        if ($date) {
+            $params['on_date'] = $date->format('Y-m-d');
+        }
+
+        return $this->http_client->request($this->getPath(), $params);
+    }
+
+    /**
+     * Get the availability per day for a specific tour and timespan. 
+     * @see https://api.triptelligent.com/doc/public/tours/getting_the_availability_for_a_specific_tour_dayticket_and_timespan.html
+     * @see https://api.triptelligent.com/doc/public/tours/getting_the_availability_for_a_specific_tour_and_timespan.html
+     *  
+     * @param integer $id
+     * @param \DateTime $from - optional
+     * @param \DateTime $to - optional
+     * @return \StdClass
+     */
+    public function getAvailability($id, \DateTime $from = null, \DateTime $to = null) {
+        $params = array();
+
+        if ($from && $to) {
+            $params['from'] = $from->format('Y-m-d');
+            $params['to'] = $to->format('Y-m-d');
+        }
+
+        return $this->http_client->request($this->getPath() . "/$id/availability", $params);
+    }
+
+    /**
+     * Calculates the total price for booking a specific tour with the given number of people.
+     * @see https://api.triptelligent.com/doc/public/tours/getting_the_price_for_a_specific_tour_and_number_of_adults__children.html
+     * 
+     * @param integer $id
+     * @param integer $adults
+     * @param integer $children
+     * @return \StdClass 
+     */
+    public function getPrice($id, $adults = 2, $children = 0) {
+        $params = array();
+        $params['adult_count'] = $adults;
+        $params['child_count'] = $children;
+
+        return $this->http_client->request($this->getPath() . "/$id/price", $params);
+    }
+
+    /**
+     * Get all images for a tour. 
+     * @see https://api.triptelligent.com/doc/public/tours/getting_all_images_for_a_specific_tour.html
+     * 
+     * @param integer $id
+     * @return \StdClass 
+     */
+    public function getImages($id) {
+        return $this->http_client->request($this->getPath() . "/$id/images");
+    }
+
+    /**
+     * Get feedback from guests who already took the tour. 
+     * @see https://api.triptelligent.com/doc/public/tours/getting_guest_feedback_for_a_specific_tour.html
+     * 
+     * @param integer $id
+     * @return \StdClass 
+     */
+    public function getFeedback($id) {
+        return $this->http_client->request($this->getPath() . "/$id/feedback");
+    }
+
+}

@@ -1,0 +1,26 @@
+{
+    "name": "mgribov/php-triptelligent",
+    "description": "Triptelligent RESTful API PHP5 library",
+    "keywords": ["triptelligent", "api", "php"],
+    "type": "library",
+    "homepage": "https://github.com/mgribov/php-triptelligent",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Max Gribov",
+            "email": "max@neuropunks.org",
+            "homepage": "https://github.com/mgribov"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Triptelligent\\": "src/Triptelligent"
+        }
+    }
+}
+
