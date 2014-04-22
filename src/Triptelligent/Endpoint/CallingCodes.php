@@ -11,7 +11,7 @@ class CallingCodes extends Endpoint {
      * @see https://api.triptelligent.com/doc/public/calling_codes/getting_the_calling_codes_for_a_specific_country.html
      * 
      * @param string $c
-     * @return \StdClass 
+     * @return array
      */
     public function getForCountry($c) {
         return $this->getAll(array('for_country', $c));

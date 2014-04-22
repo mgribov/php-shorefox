@@ -24,7 +24,7 @@ interface EndpointInterface {
     public function getPath();
 
     /**
-     * HTTP client capable for HTTP requests and JSON to StdClass conversion 
+     * HTTP client capable for HTTP requests and JSON to array conversion 
      */
     public function setHttpClient(\Triptelligent\Client\HttpClientInterface $client);
 

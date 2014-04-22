@@ -13,7 +13,7 @@ class Tours extends Endpoint {
      * 
      * @param integer $d
      * @param \DateTime $date - optional
-     * @return \StdClass
+     * @return array
      */
     public function getInDestination($d, \DateTime $date = null) {
         $params = array('in_destination' => $d);
@@ -33,7 +33,7 @@ class Tours extends Endpoint {
      * @param integer $id
      * @param \DateTime $from - optional
      * @param \DateTime $to - optional
-     * @return \StdClass
+     * @return array
      */
     public function getAvailability($id, \DateTime $from = null, \DateTime $to = null) {
         $params = array();
@@ -53,7 +53,7 @@ class Tours extends Endpoint {
      * @param integer $id
      * @param integer $adults
      * @param integer $children
-     * @return \StdClass 
+     * @return array 
      */
     public function getPrice($id, $adults = 2, $children = 0) {
         $params = array();
@@ -68,7 +68,7 @@ class Tours extends Endpoint {
      * @see https://api.triptelligent.com/doc/public/tours/getting_all_images_for_a_specific_tour.html
      * 
      * @param integer $id
-     * @return \StdClass 
+     * @return array 
      */
     public function getImages($id) {
         return $this->get($id, array(), '/images');
@@ -79,7 +79,7 @@ class Tours extends Endpoint {
      * @see https://api.triptelligent.com/doc/public/tours/getting_guest_feedback_for_a_specific_tour.html
      * 
      * @param integer $id
-     * @return \StdClass 
+     * @return array 
      */
     public function getFeedback($id) {
         return $this->get($id, array(), '/feedback');

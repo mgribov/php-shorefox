@@ -26,11 +26,11 @@ abstract class Endpoint implements EndpointInterface {
      * @var Triptelligent\Client\HttpClientInterface 
      */
     protected $http_client;
-
+    
     /**
      *
      * @param string $id
-     * @return \StdClass 
+     * @return array 
      */
     public function get($id, array $params = array(), $function = null) {
         $path = $this->getPath() . '/' . $id . $function;        
@@ -39,7 +39,7 @@ abstract class Endpoint implements EndpointInterface {
 
     /**
      *
-     * @return \StdClass 
+     * @return array 
      */
     public function getAll(array $params = array()) {
         return $this->http_client->request($this->getPath(), $params);
@@ -60,5 +60,5 @@ abstract class Endpoint implements EndpointInterface {
     public function getPath() {
         return $this->prefix . $this->path;
     }
-
+    
 }

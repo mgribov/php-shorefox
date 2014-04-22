@@ -11,7 +11,7 @@ class CruiseShips extends Endpoint {
      * @see https://api.triptelligent.com/doc/public/cruise_ships/getting_a_list_of_cruise_ships_for_a_specific_cruise_line.html
      * 
      * @param integer $cruiseline
-     * @return \StdClass 
+     * @return array 
      */
     public function getForCruiseLine($cruiseline) {
         return $this->getAll(array('for_cruise_line' => $cruiseline));

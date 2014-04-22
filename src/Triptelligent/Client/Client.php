@@ -3,7 +3,7 @@
 namespace Triptelligent\Client;
 
 /**
- * Simple wrapper to bring individual Endpoint classes and an HTTP client together 
+ * Simple wrapper to bring individual Endpoint classes, HTTP client and HTTP storage together 
  */
 class Client {
     protected $http_client;
@@ -13,10 +13,24 @@ class Client {
      * 
      * @param string $token
      * @param string $secret
-     * @param bool $debug 
+     * @param array $storage_config
+     * @param bool debug
      */
-    public function __construct($token, $secret, $debug = false) {
-        $this->http_client = new HttpClient($token, $secret, $debug);
+    public function __construct($token, $secret, array $storage_config = array(), $debug = false) {
+        $this->http_client = new HttpClient($token, $secret);
+        $this->http_client->setDebug($debug);
+        
+        if (count($storage_config) && array_key_exists('class', $storage_config) && array_key_exists('config', $storage_config)) {
+            if (class_exists($storage_config['class'])) {
+                $storage_backend = new $storage_config['class']($storage_config['config']);
+
+                $storage = new \Triptelligent\Storage\HttpStorage;
+                $storage->setBackend($storage_backend);
+                $storage->setDebug($debug);
+                
+                $this->http_client->setStorage($storage);
+            }
+        }
     }
 
     /**

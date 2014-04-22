@@ -11,7 +11,7 @@ class CruiseDates extends Endpoint {
      * @see https://api.triptelligent.com/doc/public/cruise_dates/getting_a_list_of_cruise_dates_for_a_specific_cruise_ship.html
      * 
      * @param integer $ship
-     * @return \StdClass
+     * @return array
      */
     public function getForCruiseShip($ship) {
         return $this->getAll(array('for_cruise_ship' => $ship));
@@ -22,7 +22,7 @@ class CruiseDates extends Endpoint {
      * @see https://api.triptelligent.com/doc/public/cruise_dates/getting_the_itinerary_for_a_specific_cruise_date.html
      * 
      * @param integer $id
-     * @return \StdClass 
+     * @return array 
      */
     public function getItinerary($id) {
         return $this->get($id, array(), '/itinerary');
