@@ -1,7 +1,6 @@
 Triptelligent REST API PHP5 client
 
 NOTE: Currently, supports read-only mode, i.e. no booking via POST to /bookings and no support for /config endpoint.
-TODO: Currently, DOES NOT respect Cache-Control and ETag response headers, which is required for production use.
 
 Make sure you install composer and run "./composer.phar dump-autoload" first.
 
