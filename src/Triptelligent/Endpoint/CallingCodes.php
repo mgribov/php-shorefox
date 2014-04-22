@@ -14,7 +14,7 @@ class CallingCodes extends Endpoint {
      * @return \StdClass 
      */
     public function getForCountry($c) {
-        return $this->http_client->request($this->getPath(), array('for_country', $c));
+        return $this->getAll(array('for_country', $c));
     }
 
 }

@@ -6,13 +6,16 @@ interface EndpointInterface {
 
     /**
      * Get one full first-class object for this endpoint by its id
+     * Optionally, pass some filtering params (ex: ?in_region=1234)
+     * Optionally, pass a function (ex: /images)
      */
-    public function get($id);
+    public function get($id, array $params = array(), $function = null);
 
     /**
      * Get all objects for this endpoint 
+     * Optionally, pass some filtering params (ex: ?in_region=1234)
      */
-    public function getAll();
+    public function getAll(array $params = array());
 
     /**
      * Build base path for this endpoint 

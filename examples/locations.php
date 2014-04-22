@@ -23,7 +23,7 @@ try {
     $regions_caribbean = $trip->getRegions()->get(3);
 
     // get all destinations (ports) in caribbean
-    $destinations_all = $trip->getDestinations()->getForRegion($regions_caribbean->region->id);
+    $destinations_all = $trip->getDestinations()->getInRegion($regions_caribbean->region->id);
 
     // get info on st maarten
     $destinations_stmaarten = $trip->getDestinations()->get(100);

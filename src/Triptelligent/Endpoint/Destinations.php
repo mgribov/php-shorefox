@@ -13,8 +13,8 @@ class Destinations extends Endpoint {
      * @param integer $region
      * @return \StdClass
      */
-    public function getForRegion($region) {
-        return $this->http_client->request($this->getPath(), array('in_region' => $region));
+    public function getInRegion($region) {
+        return $this->getAll(array('in_region' => $region));
     }
 
     /**
@@ -24,8 +24,8 @@ class Destinations extends Endpoint {
      * @param integer $destination
      * @return \StdClass 
      */
-    public function getImages($destination) {
-        return $this->http_client->request($this->getPath() . "/$destination/images");
+    public function getImages($id) {
+        return $this->get($id, array(), '/images');
     }
 
 }

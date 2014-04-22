@@ -15,14 +15,14 @@ class Tours extends Endpoint {
      * @param \DateTime $date - optional
      * @return \StdClass
      */
-    public function getForDestination($d, \DateTime $date = null) {
+    public function getInDestination($d, \DateTime $date = null) {
         $params = array('in_destination' => $d);
 
         if ($date) {
             $params['on_date'] = $date->format('Y-m-d');
         }
 
-        return $this->http_client->request($this->getPath(), $params);
+        return $this->getAll($params);
     }
 
     /**
@@ -42,8 +42,8 @@ class Tours extends Endpoint {
             $params['from'] = $from->format('Y-m-d');
             $params['to'] = $to->format('Y-m-d');
         }
-
-        return $this->http_client->request($this->getPath() . "/$id/availability", $params);
+        
+        return $this->get($id, $params, '/availability');
     }
 
     /**
@@ -60,7 +60,7 @@ class Tours extends Endpoint {
         $params['adult_count'] = $adults;
         $params['child_count'] = $children;
 
-        return $this->http_client->request($this->getPath() . "/$id/price", $params);
+        return $this->get($id, $params, '/price');
     }
 
     /**
@@ -71,7 +71,7 @@ class Tours extends Endpoint {
      * @return \StdClass 
      */
     public function getImages($id) {
-        return $this->http_client->request($this->getPath() . "/$id/images");
+        return $this->get($id, array(), '/images');
     }
 
     /**
@@ -82,7 +82,7 @@ class Tours extends Endpoint {
      * @return \StdClass 
      */
     public function getFeedback($id) {
-        return $this->http_client->request($this->getPath() . "/$id/feedback");
+        return $this->get($id, array(), '/feedback');
     }
 
 }

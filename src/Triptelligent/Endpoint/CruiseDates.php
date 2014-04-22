@@ -14,7 +14,7 @@ class CruiseDates extends Endpoint {
      * @return \StdClass
      */
     public function getForCruiseShip($ship) {
-        return $this->http_client->request($this->getPath(), array('for_cruise_ship' => $ship));
+        return $this->getAll(array('for_cruise_ship' => $ship));
     }
 
     /**
@@ -25,7 +25,7 @@ class CruiseDates extends Endpoint {
      * @return \StdClass 
      */
     public function getItinerary($id) {
-        return $this->http_client->request($this->getPath() . "/$id/itinerary");
+        return $this->get($id, array(), '/itinerary');
     }
 
 }

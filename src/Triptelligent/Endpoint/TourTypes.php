@@ -13,8 +13,8 @@ class TourTypes extends Endpoint {
      * @param integer $s
      * @return \StdClass
      */
-    public function getForSubtype($s) {
-        return $this->http_client->request($this->getPath(), array('with_tour_sub_type' => $s));
+    public function getWithTourSubType($s) {
+        return $this->getAll(array('with_tour_sub_type' => $s));
     }
 
 }

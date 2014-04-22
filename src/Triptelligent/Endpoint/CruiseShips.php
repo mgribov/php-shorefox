@@ -14,7 +14,7 @@ class CruiseShips extends Endpoint {
      * @return \StdClass 
      */
     public function getForCruiseLine($cruiseline) {
-        return $this->http_client->request($this->getPath(), array('for_cruise_line' => $cruiseline));
+        return $this->getAll(array('for_cruise_line' => $cruiseline));
     }
 
 }

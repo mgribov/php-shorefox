@@ -12,10 +12,10 @@ try {
     
 
     // get tour types by sub-type, ex for "Water Adventures -> Surf Lessons"
-    $tourtypes_all = $trip->getTourTypes()->getForSubtype(5);
+    $tourtypes_all = $trip->getTourTypes()->getWithTourSubType(5);
 
     // list of tours in caribbean for specific date (date is optional, will otherwise return all caribbean tours)
-    $tours_caribbean = $trip->getTours()->getForDestination(3, new \DateTime('2014-05-21'));
+    $tours_caribbean = $trip->getTours()->getInDestination(3, new \DateTime('2014-05-21'));
 
     // get tour details for the first tour from above
     $tour = $trip->getTours()->get($tours_caribbean->tours[0]->id);

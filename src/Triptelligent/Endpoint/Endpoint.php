@@ -32,16 +32,17 @@ abstract class Endpoint implements EndpointInterface {
      * @param string $id
      * @return \StdClass 
      */
-    public function get($id) {
-        return $this->http_client->request($this->getPath() . '/' . $id);
+    public function get($id, array $params = array(), $function = null) {
+        $path = $this->getPath() . '/' . $id . $function;        
+        return $this->http_client->request($path, $params);
     }
 
     /**
      *
      * @return \StdClass 
      */
-    public function getAll() {
-        return $this->http_client->request($this->getPath());
+    public function getAll(array $params = array()) {
+        return $this->http_client->request($this->getPath(), $params);
     }
 
     /**
