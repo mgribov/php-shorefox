@@ -1,5 +1,9 @@
 Triptelligent REST API PHP5 client
 
+Clients consuming the API are required to respect ETag and Cache-Control headers returned.
+For now, only 1 storage engine is supported, MongoDB.
+See src/Triptelligent/Storage for details
+
 NOTE: Currently, supports read-only mode, i.e. no booking via POST to /bookings and no support for /config endpoint.
 
 Make sure you install composer and run "./composer.phar dump-autoload" first.
