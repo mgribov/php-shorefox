@@ -71,7 +71,7 @@ class HttpClient implements HttpClientInterface, \Triptelligent\Debug\DebugInter
         
         $res = $this->__curl($path, $method, $headers);
         $response =  json_decode($res['body'], true);
-        
+
         if (is_array($response) && array_key_exists('error', $response)) {
             switch ($response['error']) {
                 case "invalid_grant":

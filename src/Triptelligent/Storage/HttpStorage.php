@@ -22,7 +22,7 @@ class HttpStorage implements HttpStorageInterface, \Triptelligent\Debug\DebugInt
         $this->debug = $v;
     }
     
-    public function setBackend($b) {
+    public function setBackend(\Triptelligent\Storage\Backend\BackendInterface $b) {
         $this->backend = $b;
     }
     
@@ -63,7 +63,7 @@ class HttpStorage implements HttpStorageInterface, \Triptelligent\Debug\DebugInt
             }
         }
 
-        $etag = preg_replace('/"/', '', $all_headers['Etag']);
+        $etag = array_key_exists('Etag', $all_headers) ? preg_replace('/"/', '', $all_headers['Etag']) : null;
         
         // get max-age
         $cache = array();
@@ -76,7 +76,13 @@ class HttpStorage implements HttpStorageInterface, \Triptelligent\Debug\DebugInt
             $this->object['response'] = $response; 
             $this->object['cache'] = (int)(time() + $cache[1]);
             $this->object['etag'] = $etag;
+            
+            return $this->backend->put($this->object);
+            
+        } elseif ($headers[0] == "HTTP/1.1 304 Not Modified") {
+            $this->object['cache'] = (int)(time() + $cache[1]);
 
+            $this->backend->delete($path);
             return $this->backend->put($this->object);
         }
     }
