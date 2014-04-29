@@ -13,7 +13,8 @@ class HttpClient implements HttpClientInterface, \Triptelligent\Debug\DebugInter
     protected $debug;
     
     /**
-     *
+     * Sets authentication for the requests
+     * 
      * @param string $token
      * @param string $secret
      */
@@ -22,10 +23,19 @@ class HttpClient implements HttpClientInterface, \Triptelligent\Debug\DebugInter
         $this->secret = $secret;
     }
 
+    /**
+     * Local storage for responses to allow respecting cache/etags
+     * 
+     * @param \Triptelligent\Storage\HttpStorageInterface $storage 
+     */
     public function setStorage(\Triptelligent\Storage\HttpStorageInterface $storage) {
         $this->storage = $storage;
     }
     
+    /**
+     *
+     * @param bool $v 
+     */
     public function setDebug($v) {
         $this->debug = $v;
     }
@@ -97,12 +107,24 @@ class HttpClient implements HttpClientInterface, \Triptelligent\Debug\DebugInter
 
         if ($this->storage && $method == 'GET') {
             $this->storage->save($path, $response, $res['header']);
+            
+            // it is possible that response before only contained 304 and not actual response
+            // so we make sure we get current response data from storage
+            $response = $this->storage->getResponse();
         }
         
         return $response;
 
     }
 
+    /**
+     * CURL wrapper
+     * 
+     * @param string $path
+     * @param string $method
+     * @param array $headers
+     * @return array 
+     */
     protected function __curl($path, $method = 'GET', $headers = array()) {
         $ret = array();
         
