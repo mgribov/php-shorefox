@@ -26,6 +26,16 @@ abstract class Endpoint implements EndpointInterface {
      * @var Triptelligent\Client\HttpClientInterface 
      */
     protected $http_client;
+
+    /**
+     * @todo path is not flexible right now
+     * 
+     * @param array $params 
+     * @return array
+     */
+    public function create(array $params = array()) {
+        return $this->http_client->request($this->getPath(), $params, 'POST');
+    }
     
     /**
      *

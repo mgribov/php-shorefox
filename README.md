@@ -2,8 +2,6 @@
 
 Consumes [triptelligent.com](http://triptelligent.com) REST API
 
-**NOTE:** Currently, supports read-only mode, i.e. no booking via POST to /bookings and no support for /config endpoint.
-
 ## Install via Composer into existing project
     curl -sS https://getcomposer.org/installer | php # if composer is not installed
     ./composer.phar require mgribov/php-triptelligent
