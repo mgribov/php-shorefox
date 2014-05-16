@@ -28,6 +28,14 @@ abstract class Endpoint implements EndpointInterface {
     protected $http_client;
 
     /**
+     * There is a dev version of the API which can be used sometimes
+     * @param string $v 
+     */
+    public function setPrefix($v) {
+        $this->prefix = $v;
+    }
+    
+    /**
      * @todo path is not flexible right now
      * 
      * @param array $params 

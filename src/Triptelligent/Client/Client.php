@@ -7,6 +7,8 @@ namespace Triptelligent\Client;
  */
 class Client {
     protected $http_client;
+    
+    public $api_url = 'https://api.triptelligent.com/';
 
     /**
      * Values to be used by HTTP client for the actual request
@@ -49,6 +51,8 @@ class Client {
         if (class_exists($class)) {
             $c = new $class;
             $c->setHttpClient($this->http_client);
+            $c->setPrefix($this->api_url);
+            
             return $c;
         }
 
