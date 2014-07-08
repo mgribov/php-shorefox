@@ -15,7 +15,8 @@
     "require": {
         "php": ">=5.3.0",
         "ext-curl": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "mgribov/apiscrape": "dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -23,4 +24,3 @@
         }
     }
 }
-

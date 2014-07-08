@@ -7,12 +7,9 @@ include 'auth.php';
 try {
     // we need to store HTTP response headers and responses to comply with API caching policy
     $storage_config = array(
-        'class' => "\\Triptelligent\\Storage\\Backend\\Mongo",
-        'config' => array(
-            'connection' => 'mongodb://127.0.0.1:27017',
-            'database' => 'triptelligent', 
-            'collection' => 'api',
-            )
+        'connection' => 'mongodb://127.0.0.1:27017',
+        'database' => 'triptelligent',    
+        'collection' => 'api',
         );
     
     $trip = new \Triptelligent\Client\Client($api_token, $api_secret, $storage_config, true);

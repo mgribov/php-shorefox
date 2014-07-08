@@ -42,7 +42,7 @@ abstract class Endpoint implements EndpointInterface {
      * @return array
      */
     public function create(array $params = array()) {
-        return $this->http_client->request($this->getPath(), $params, 'POST');
+        return $this->http_client->post($this->getPath(), $params);
     }
     
     /**
@@ -52,7 +52,7 @@ abstract class Endpoint implements EndpointInterface {
      */
     public function get($id, array $params = array(), $function = null) {
         $path = $this->getPath() . '/' . $id . $function;        
-        return $this->http_client->request($path, $params);
+        return $this->http_client->get($path, $params);
     }
 
     /**
@@ -60,14 +60,14 @@ abstract class Endpoint implements EndpointInterface {
      * @return array 
      */
     public function getAll(array $params = array()) {
-        return $this->http_client->request($this->getPath(), $params);
+        return $this->http_client->get($this->getPath(), $params);
     }
 
     /**
      *
      * @param \Triptelligent\Client\HttpClientInterface $client 
      */
-    public function setHttpClient(\Triptelligent\Client\HttpClientInterface $client) {
+    public function setHttpClient(\Scrape\Client\Client $client) {
         $this->http_client = $client;
     }
 

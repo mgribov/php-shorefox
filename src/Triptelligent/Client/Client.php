@@ -2,12 +2,23 @@
 
 namespace Triptelligent\Client;
 
+use \Scrape\Client\Client as HttpClient;
+
 /**
  * Simple wrapper to bring individual Endpoint classes, HTTP client and HTTP storage together 
  */
 class Client {
+    
+    /**
+     * HTTP client with local caching support
+     * @var \Scrape\Client\Client
+     */
     protected $http_client;
     
+    /**
+     * Change this to https://triptelligent-api-dev.herokuapp.com if you want to use the dev endpoints
+     * @var string 
+     */
     public $api_url = 'https://api.triptelligent.com/';
 
     /**
@@ -19,20 +30,21 @@ class Client {
      * @param bool debug
      */
     public function __construct($token, $secret, array $storage_config = array(), $debug = false) {
-        $this->http_client = new HttpClient($token, $secret);
-        $this->http_client->setDebug($debug);
+        $config = array(
+            'storage' => array(
+                'class' => "\\Scrape\\Storage\\Backend\\Mongo",
+                'config' => $storage_config,
+                ),
+            'auth' => array(
+                'class' => '\\Scrape\\Auth\\HttpBasic',
+                'config' => array(
+                    'user' => $token,
+                    'secret' => $secret
+                    ),
+                ),
+            );
         
-        if (count($storage_config) && array_key_exists('class', $storage_config) && array_key_exists('config', $storage_config)) {
-            if (class_exists($storage_config['class'])) {
-                $storage_backend = new $storage_config['class']($storage_config['config']);
-
-                $storage = new \Triptelligent\Storage\HttpStorage;
-                $storage->setBackend($storage_backend);
-                $storage->setDebug($debug);
-                
-                $this->http_client->setStorage($storage);
-            }
-        }
+        $this->http_client = new HttpClient($config, $debug);
     }
 
     /**

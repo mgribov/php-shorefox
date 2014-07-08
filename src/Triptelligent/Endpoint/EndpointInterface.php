@@ -26,6 +26,6 @@ interface EndpointInterface {
     /**
      * HTTP client capable for HTTP requests and JSON to array conversion 
      */
-    public function setHttpClient(\Triptelligent\Client\HttpClientInterface $client);
+    public function setHttpClient(\Scrape\Client\Client $client);
 
 }
