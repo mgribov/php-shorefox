@@ -19,7 +19,7 @@ class Client {
      * Change this to https://triptelligent-api-dev.herokuapp.com if you want to use the dev endpoints
      * @var string 
      */
-    public $api_url = 'https://api.triptelligent.com/';
+    public $api_url = 'https://api.shorefox.com/';
 
     /**
      * Values to be used by HTTP client for the actual request
