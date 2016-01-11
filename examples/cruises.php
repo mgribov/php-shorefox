@@ -8,11 +8,11 @@ try {
     // we need to store HTTP response headers and responses to comply with API caching policy
     $storage_config = array(
         'connection' => 'mongodb://127.0.0.1:27017',
-        'database' => 'triptelligent',    
+        'database' => 'shorefox',    
         'collection' => 'api',
         );
     
-    $trip = new \Triptelligent\Client\Client($api_token, $api_secret, $storage_config, true);
+    $trip = new \Shorefox\Client\Client($api_token, $api_secret, $storage_config, true);
 
     // get all cruise dates for carnival splendor
     $cruises_carnival_splendor = $trip->getCruiseDates()->getForCruiseShip(5843060);

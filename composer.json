@@ -1,9 +1,9 @@
 {
-    "name": "mgribov/php-triptelligent",
-    "description": "Triptelligent RESTful API PHP5 library",
-    "keywords": ["triptelligent", "api", "php"],
+    "name": "mgribov/php-shorefox",
+    "description": "Shorefox RESTful API PHP5 library",
+    "keywords": ["shorefox", "api", "php"],
     "type": "library",
-    "homepage": "https://github.com/mgribov/php-triptelligent",
+    "homepage": "https://github.com/mgribov/php-shorefox",
     "license": "MIT",
     "authors": [
         {
@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Triptelligent\\": "src/Triptelligent"
+            "Shorefox\\": "src/Shorefox"
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Triptelligent\Endpoint;
+namespace Shorefox\Endpoint;
 
 /**
  * Basic structure for an endpoint 
@@ -12,7 +12,7 @@ abstract class Endpoint implements EndpointInterface {
      * 
      * @var string
      */
-    protected $prefix = 'https://api.triptelligent.com/';
+    protected $prefix = 'https://api.shorefox.com/';
     
     /**
      * Path after prefix, example 'destinations'
@@ -23,7 +23,7 @@ abstract class Endpoint implements EndpointInterface {
     
     /**
      * 
-     * @var Triptelligent\Client\HttpClientInterface 
+     * @var Shorefox\Client\HttpClientInterface 
      */
     protected $http_client;
 
@@ -65,7 +65,7 @@ abstract class Endpoint implements EndpointInterface {
 
     /**
      *
-     * @param \Triptelligent\Client\HttpClientInterface $client 
+     * @param \Shorefox\Client\HttpClientInterface $client 
      */
     public function setHttpClient(\Scrape\Client\Client $client) {
         $this->http_client = $client;

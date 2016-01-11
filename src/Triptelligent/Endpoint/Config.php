@@ -1,6 +1,6 @@
 <?php
 
-namespace Triptelligent\Endpoint;
+namespace Shorefox\Endpoint;
 
 class Config extends Endpoint {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Triptelligent\Endpoint;
+namespace Shorefox\Endpoint;
 
 class TourTypes extends Endpoint {
 
@@ -8,7 +8,7 @@ class TourTypes extends Endpoint {
 
     /**
      * Get a list of tour types for a specific tour sub-type
-     * @see https://api.triptelligent.com/doc/public/tour_types/getting_a_list_of_tour_types_for_a_specific_tour_subtype.html
+     * @see https://api.shorefox.com/doc/public/tour_types/getting_a_list_of_tour_types_for_a_specific_tour_subtype.html
      * 
      * @param integer $s
      * @return array

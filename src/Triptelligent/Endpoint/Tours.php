@@ -1,6 +1,6 @@
 <?php
 
-namespace Triptelligent\Endpoint;
+namespace Shorefox\Endpoint;
 
 class Tours extends Endpoint {
 
@@ -8,8 +8,8 @@ class Tours extends Endpoint {
 
     /**
      * Get a list of tours for a destination. 
-     * @see https://api.triptelligent.com/doc/public/tours/getting_a_list_of_tours_in_a_specific_destination.html
-     * @see https://api.triptelligent.com/doc/public/tours/getting_a_list_of_tours_that_are_available_on_a_specific_date.html
+     * @see https://api.shorefox.com/doc/public/tours/getting_a_list_of_tours_in_a_specific_destination.html
+     * @see https://api.shorefox.com/doc/public/tours/getting_a_list_of_tours_that_are_available_on_a_specific_date.html
      * 
      * @param integer $d
      * @param \DateTime $date - optional
@@ -27,8 +27,8 @@ class Tours extends Endpoint {
 
     /**
      * Get the availability per day for a specific tour and timespan. 
-     * @see https://api.triptelligent.com/doc/public/tours/getting_the_availability_for_a_specific_tour_dayticket_and_timespan.html
-     * @see https://api.triptelligent.com/doc/public/tours/getting_the_availability_for_a_specific_tour_and_timespan.html
+     * @see https://api.shorefox.com/doc/public/tours/getting_the_availability_for_a_specific_tour_dayticket_and_timespan.html
+     * @see https://api.shorefox.com/doc/public/tours/getting_the_availability_for_a_specific_tour_and_timespan.html
      *  
      * @param integer $id
      * @param \DateTime $from - optional
@@ -48,7 +48,7 @@ class Tours extends Endpoint {
 
     /**
      * Calculates the total price for booking a specific tour with the given number of people.
-     * @see https://api.triptelligent.com/doc/public/tours/getting_the_price_for_a_specific_tour_and_number_of_adults__children.html
+     * @see https://api.shorefox.com/doc/public/tours/getting_the_price_for_a_specific_tour_and_number_of_adults__children.html
      * 
      * @param integer $id
      * @param integer $adults
@@ -65,7 +65,7 @@ class Tours extends Endpoint {
 
     /**
      * Get all images for a tour. 
-     * @see https://api.triptelligent.com/doc/public/tours/getting_all_images_for_a_specific_tour.html
+     * @see https://api.shorefox.com/doc/public/tours/getting_all_images_for_a_specific_tour.html
      * 
      * @param integer $id
      * @return array 
@@ -76,7 +76,7 @@ class Tours extends Endpoint {
 
     /**
      * Get feedback from guests who already took the tour. 
-     * @see https://api.triptelligent.com/doc/public/tours/getting_guest_feedback_for_a_specific_tour.html
+     * @see https://api.shorefox.com/doc/public/tours/getting_guest_feedback_for_a_specific_tour.html
      * 
      * @param integer $id
      * @return array 

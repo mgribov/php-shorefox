@@ -1,6 +1,6 @@
 <?php
 
-namespace Triptelligent\Client;
+namespace Shorefox\Client;
 
 use \Scrape\Client\Client as HttpClient;
 
@@ -16,7 +16,7 @@ class Client {
     protected $http_client;
     
     /**
-     * Change this to https://triptelligent-api-dev.herokuapp.com if you want to use the dev endpoints
+     * Change this to https://shorefox-api-dev.herokuapp.com if you want to use the dev endpoints
      * @var string 
      */
     public $api_url = 'https://api.shorefox.com/';
@@ -50,15 +50,15 @@ class Client {
     /**
      * Endpoints are defined as classes and are instantiated here
      * example: $client->getDestinations() will give back new instance
-     * of \Triptelligent\Endpoint\Destinations()
+     * of \Shorefox\Endpoint\Destinations()
      * 
      * @param string $endpoint
      * @param array $params
-     * @return \Triptelligent\Endpoint\EndpointInterface
+     * @return \Shorefox\Endpoint\EndpointInterface
      * @throws \Exception 
      */
     public function __call($endpoint, $params = array()) {
-        $class = "\\Triptelligent\\Endpoint\\" . preg_replace('/^get/i', '', $endpoint); 
+        $class = "\\Shorefox\\Endpoint\\" . preg_replace('/^get/i', '', $endpoint); 
         
         if (class_exists($class)) {
             $c = new $class;

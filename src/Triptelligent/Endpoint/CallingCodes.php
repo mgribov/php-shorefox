@@ -1,6 +1,6 @@
 <?php
 
-namespace Triptelligent\Endpoint;
+namespace Shorefox\Endpoint;
 
 class CallingCodes extends Endpoint {
 
@@ -8,7 +8,7 @@ class CallingCodes extends Endpoint {
 
     /**
      * Get the country code(s) for a specific country. 
-     * @see https://api.triptelligent.com/doc/public/calling_codes/getting_the_calling_codes_for_a_specific_country.html
+     * @see https://api.shorefox.com/doc/public/calling_codes/getting_the_calling_codes_for_a_specific_country.html
      * 
      * @param string $c
      * @return array

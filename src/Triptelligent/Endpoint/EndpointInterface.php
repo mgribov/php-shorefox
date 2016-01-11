@@ -1,6 +1,6 @@
 <?php
 
-namespace Triptelligent\Endpoint;
+namespace Shorefox\Endpoint;
 
 interface EndpointInterface {
 
@@ -19,7 +19,7 @@ interface EndpointInterface {
 
     /**
      * Build base path for this endpoint 
-     * example: https://api.triptelligent.com/destinations 
+     * example: https://api.shorefox.com/destinations 
      */
     public function getPath();
 
