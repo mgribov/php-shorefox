@@ -66,7 +66,7 @@ class Client {
         
         if (class_exists($class)) {
             $c = new $class;
-            $c->setHttpClient($this->http_client);
+            $c->setHttpClient($this->scraper);
             $c->setPrefix($this->api_url);
             
             return $c;
